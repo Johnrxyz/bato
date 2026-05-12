@@ -1,0 +1,211 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border-right: var(--border);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  transition: width var(--transition-slow);
+  width: var(--sidebar-width);
+}
+
+.sidebar.collapsed {
+  width: 48px;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 14px var(--space-3);
+  border-bottom: var(--border);
+  min-height: var(--topbar-height);
+  flex-shrink: 0;
+}
+
+.logo { flex-shrink: 0; }
+
+.brandName {
+  font-size: var(--text-md);
+  font-weight: var(--font-semibold);
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+/* Nav */
+.nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2);
+  overflow-y: auto;
+}
+
+.quickAction {
+  padding: var(--space-4) var(--space-3);
+  display: flex;
+  justify-content: center;
+}
+
+.newBtn {
+  width: 100%;
+  height: 38px;
+  background-color: var(--color-accent);
+  color: white;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.newBtn:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.newBtnCollapsed {
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-accent);
+  color: white;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-2);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
+  min-height: 32px;
+}
+
+.navItem:hover {
+  background-color: var(--color-muted);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.navItem.active {
+  background-color: var(--color-accent-subtle);
+  color: var(--color-accent);
+}
+
+.navLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Bottom */
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2);
+  border-top: var(--border);
+  flex-shrink: 0;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent);
+  color: white;
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.userInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.userName {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userRole {
+  font-size: var(--text-xs);
+  color: var(--color-text-disabled);
+  text-transform: capitalize;
+}
+
+.logoutBtn {
+  background: none;
+  border: none;
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-disabled);
+  display: flex;
+  align-items: center;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.logoutBtn:hover {
+  color: var(--color-danger);
+  background-color: var(--color-danger-subtle);
+}
+
+.collapseBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-1);
+  color: var(--color-text-disabled);
+  width: 100%;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  cursor: pointer;
+  font-size: var(--text-xs);
+}
+
+.collapseBtn:hover {
+  background-color: var(--color-muted);
+  color: var(--color-text-primary);
+}

@@ -1,0 +1,69 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--topbar-height);
+  padding: 0 var(--space-6);
+  border-bottom: var(--border);
+  background-color: var(--color-surface);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+.pageTitle {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.notifBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: var(--border);
+  border-radius: var(--radius-md);
+  width: 32px;
+  height: 32px;
+  color: var(--color-text-secondary);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.notifBtn:hover {
+  background-color: var(--color-muted);
+  color: var(--color-text-primary);
+}
+
+.notifBtnActive {
+  background-color: var(--color-accent-subtle);
+  border-color: var(--color-accent-muted);
+  color: var(--color-accent);
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--color-danger);
+  color: white;
+  font-size: 9px;
+  font-weight: var(--font-semibold);
+  border-radius: var(--radius-full);
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  line-height: 1;
+}

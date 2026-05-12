@@ -1,0 +1,139 @@
+.page {
+  height: 100%;
+  padding: var(--space-8);
+  background-color: var(--color-bg);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-8);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.sidebar {
+  padding: var(--space-4);
+  background-color: var(--color-muted);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.tabBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  text-align: left;
+}
+
+.tabBtn:hover {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.tabActive {
+  background-color: var(--color-surface);
+  color: var(--color-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.content {
+  padding: var(--space-8);
+}
+
+.sectionTitle {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-8);
+}
+
+.formGroup {
+  margin-bottom: var(--space-6);
+  max-width: 400px;
+}
+
+.formGroup label {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+
+.formGroup input, .formGroup select {
+  width: 100%;
+  height: 36px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  font-size: var(--text-sm);
+  transition: all var(--transition-base);
+}
+
+.formGroup input:focus, .formGroup select:focus {
+  border-color: var(--color-accent);
+  background-color: var(--color-surface);
+  box-shadow: 0 0 0 3px var(--color-accent-subtle);
+  outline: none;
+}
+
+.helpText {
+  font-size: var(--text-xs);
+  color: var(--color-text-disabled);
+  margin-top: var(--space-1);
+}
+
+.saveBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: var(--color-accent);
+  color: white;
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-sm);
+  margin-top: var(--space-4);
+}
+
+.toggleGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--space-4);
+}
+
+.toggleLabel {
+  font-weight: var(--font-semibold);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-1);
+}
+
+.toggleDesc {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.toggleGroup input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-accent);
+}

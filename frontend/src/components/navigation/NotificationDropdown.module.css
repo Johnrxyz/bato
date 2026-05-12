@@ -1,0 +1,132 @@
+.dropdown {
+  position: absolute;
+  top: calc(var(--topbar-height) - 10px);
+  right: var(--space-8);
+  width: 320px;
+  max-height: 480px;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  animation: scaleIn 200ms ease;
+}
+
+.header {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+}
+
+.markAll {
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  font-weight: var(--font-medium);
+}
+
+.markAll:hover {
+  text-decoration: underline;
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.item:hover {
+  background-color: var(--color-muted);
+}
+
+.unread {
+  background-color: var(--color-accent-subtle);
+}
+
+.unread:hover {
+  background-color: var(--color-accent-muted);
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-1);
+}
+
+.typeTag {
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}
+
+.date {
+  font-size: 10px;
+  color: var(--color-text-disabled);
+}
+
+.itemTitle {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-1);
+  color: var(--color-text-primary);
+}
+
+.itemBody {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin-bottom: var(--space-2);
+}
+
+.actionLink {
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.unreadIndicator {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+}
+
+.empty {
+  padding: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--color-text-disabled);
+  text-align: center;
+}
+
+.empty p {
+  font-size: var(--text-sm);
+}
