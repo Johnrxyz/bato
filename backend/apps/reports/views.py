@@ -110,7 +110,7 @@ class ProductivityReportView(APIView):
                 status="done",
                 updated_at__gte=start,
             )
-            .extra(select={"day": "DATE(updated_at)"})
+            .extra(select={"day": "DATE(tasks.updated_at)"})
             .values("day")
             .annotate(count=Count("id"))
             .order_by("day")

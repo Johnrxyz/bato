@@ -112,19 +112,11 @@ export default function TaskPanel() {
             <h3 className={styles.sectionTitle}>Discussion</h3>
             <div className={styles.commentList}>
               {comments?.map(comment => (
-                <div key={comment.id} className={styles.commentGroup}>
-                  <CommentItem 
-                    comment={comment} 
-                    onReply={() => setReplyingTo(comment)} 
-                  />
-                  {comment.replies?.length > 0 && (
-                    <div className={styles.replies}>
-                      {comment.replies.map(reply => (
-                        <CommentItem key={reply.id} comment={reply} isReply />
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <CommentItem 
+                  key={comment.id} 
+                  comment={comment} 
+                  onReply={(c) => setReplyingTo(c)} 
+                />
               ))}
             </div>
           </section>
@@ -158,27 +150,34 @@ export default function TaskPanel() {
 
 function CommentItem({ comment, onReply, isReply }) {
   return (
-    <div className={`${styles.comment} ${isReply ? styles.replyItem : ''}`}>
-      <div className={styles.commentAvatar}>
-        {comment.author?.avatar ? (
-          <img src={comment.author.avatar} alt="" />
-        ) : (
-          <span>{comment.author?.full_name?.[0]}</span>
-        )}
-      </div>
-      <div className={styles.commentBody}>
-        <div className={styles.commentHeader}>
-          <span className={styles.commentAuthor}>{comment.author?.full_name}</span>
-          <span className={styles.commentDate}>{format(new Date(comment.created_at), 'MMM d, h:mm a')}</span>
+    <div className={styles.commentGroup}>
+      <div className={`${styles.comment} ${isReply ? styles.replyItem : ''}`}>
+        <div className={styles.commentAvatar}>
+          {comment.author?.avatar ? (
+            <img src={comment.author.avatar} alt="" />
+          ) : (
+            <span>{comment.author?.full_name?.[0]}</span>
+          )}
         </div>
-        <p className={styles.commentText}>{comment.body}</p>
-        {!isReply && (
-          <button className={styles.replyBtn} onClick={onReply}>
+        <div className={styles.commentBody}>
+          <div className={styles.commentHeader}>
+            <span className={styles.commentAuthor}>{comment.author?.full_name}</span>
+            <span className={styles.commentDate}>{format(new Date(comment.created_at), 'MMM d, h:mm a')}</span>
+          </div>
+          <p className={styles.commentText}>{comment.body}</p>
+          <button className={styles.replyBtn} onClick={() => onReply(comment)}>
             <MessageSquare size={12} />
             Reply
           </button>
-        )}
+        </div>
       </div>
+      {comment.replies?.length > 0 && (
+        <div className={styles.replies}>
+          {comment.replies.map(reply => (
+            <CommentItem key={reply.id} comment={reply} onReply={onReply} isReply />
+          ))}
+        </div>
+      )}
     </div>
   )
 }

@@ -14,7 +14,7 @@ const NAV_ITEMS = [
   { to: '/kanban', icon: LayoutGrid, label: 'Board' },
   { to: '/tasks', icon: CheckSquare, label: 'My Tasks' },
   { to: '/time', icon: Timer, label: 'Time' },
-  { to: '/reports', icon: BarChart2, label: 'Reports' },
+
 ]
 
 export default function Sidebar() {

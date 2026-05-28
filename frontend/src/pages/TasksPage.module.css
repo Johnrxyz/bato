@@ -22,7 +22,7 @@
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
   transition: border-color var(--transition-base), box-shadow var(--transition-base);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-4);
 }
 
 .quickAdd:focus-within {
@@ -34,8 +34,6 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 0 var(--space-3);
-  border-left: 1px solid var(--color-border);
   height: 24px;
 }
 
@@ -47,6 +45,24 @@
   font-weight: var(--font-medium);
   outline: none;
   cursor: pointer;
+}
+
+.newProjectBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--color-text-disabled);
+  cursor: pointer;
+  padding: 2px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.newProjectBtn:hover {
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
 }
 
 .plusIcon {
@@ -102,5 +118,100 @@
 .deleteBtn:hover {
   background-color: var(--color-danger-subtle);
   color: var(--color-danger);
+}
+
+.projectLink {
+  color: var(--color-accent, var(--brand-primary, #3b82f6));
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  transition: opacity var(--transition-fast);
+}
+
+.projectLink:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+.tableToolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--space-2);
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.filterLabel {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-medium);
+}
+
+/* Inline Editing Styles */
+.titleInput {
+  width: 100%;
+  background: transparent;
+  border: 1px solid transparent;
+  outline: none;
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  font-weight: var(--font-medium);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.titleInput:hover, .titleInput:focus {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+.badgeSelect {
+  appearance: none;
+  background: var(--color-surface-raised);
+  border: 1px solid transparent;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  outline: none;
+  transition: all var(--transition-fast);
+  color: var(--color-text-secondary);
+}
+
+.badgeSelect:hover, .badgeSelect:focus {
+  border-color: var(--color-border);
+}
+
+.badgeSelect.neutral { background-color: var(--color-surface-raised); color: var(--color-text-secondary); }
+.badgeSelect.accent { background-color: var(--color-accent-subtle); color: var(--color-accent); }
+.badgeSelect.warning { background-color: var(--color-warning-subtle); color: var(--color-warning); }
+.badgeSelect.success { background-color: var(--color-success-subtle); color: var(--color-success); }
+.badgeSelect.danger { background-color: var(--color-danger-subtle); color: var(--color-danger); }
+
+.dateInput {
+  background: transparent;
+  border: 1px solid transparent;
+  outline: none;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-medium);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.dateInput:hover, .dateInput:focus {
+  background: var(--color-surface);
+  border-color: var(--color-border);
 }
 

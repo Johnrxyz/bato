@@ -59,12 +59,26 @@
 /* Grid */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(12, 1fr);
   gap: var(--space-4);
 }
 
-@media (max-width: 900px) {
+.chartCard { grid-column: span 8; }
+.distributionCard { grid-column: span 4; }
+.overdueCard { grid-column: span 4; }
+.projectsCard { grid-column: span 8; }
+.workloadCard { grid-column: span 12; }
+
+@media (max-width: 1024px) {
+  .chartCard { grid-column: span 12; }
+  .distributionCard { grid-column: span 6; }
+  .overdueCard { grid-column: span 6; }
+  .projectsCard { grid-column: span 12; }
+}
+
+@media (max-width: 768px) {
   .grid { grid-template-columns: 1fr; }
+  .chartCard, .distributionCard, .overdueCard, .projectsCard, .workloadCard { grid-column: span 1; }
 }
 
 /* Card */
@@ -184,4 +198,143 @@
   color: var(--color-text-disabled);
   padding: var(--space-6) !important;
   font-size: var(--text-base);
+}
+
+/* Layout additions */
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+.pageTitle {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+}
+
+.cardTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.cardIcon {
+  color: var(--color-text-secondary);
+}
+.cardIconDanger {
+  color: var(--color-danger);
+}
+
+/* Toggles */
+.toggleGroup {
+  display: flex;
+  background: var(--color-surface-raised);
+  padding: 2px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+.toggleBtn {
+  background: none;
+  border: none;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: var(--font-medium);
+}
+.toggleBtn.active {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Charts */
+.chartWrapLg {
+  width: 100%;
+  margin-top: var(--space-2);
+}
+.emptyChart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  color: var(--color-text-disabled);
+  font-size: var(--text-sm);
+}
+
+/* Overdue List */
+.overdueList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+.overdueItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-danger-subtle);
+  background: var(--color-surface-raised);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-danger);
+}
+.overdueInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.overdueTitle {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.overdueTitle:hover {
+  text-decoration: underline;
+  color: var(--color-accent);
+}
+.overdueProject {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+.overdueDays {
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  color: var(--color-danger);
+}
+.emptyList {
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+}
+.moreOverdue {
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  padding: var(--space-2) 0;
+  cursor: pointer;
+}
+.moreOverdue:hover {
+  color: var(--color-text-primary);
+}
+
+/* Workload table additions */
+.tableWrap {
+  overflow-x: auto;
+}
+.memberName {
+  font-weight: var(--font-medium);
+  color: var(--color-text-primary);
+}
+.workloadNum {
+  text-align: center;
+  font-weight: var(--font-medium);
+}
+.workloadNumDanger {
+  text-align: center;
+  font-weight: var(--font-bold);
+  color: var(--color-danger);
 }

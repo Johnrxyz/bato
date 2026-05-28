@@ -34,7 +34,7 @@ function LiveTimer({ totalSeconds, startTime }) {
   )
 }
 
-export default function TaskBoard({ tasks = [], projectId }) {
+export default function TaskBoard({ tasks = [], projectId, members = [] }) {
   const queryClient = useQueryClient()
   const { toast, openTaskPanel } = useUIStore()
   const [newTaskTitle, setNewTaskTitle] = useState('')
@@ -113,7 +113,8 @@ export default function TaskBoard({ tasks = [], projectId }) {
             <th>Comments</th>
             <th>Logged</th>
             <th>Timer</th>
-            <th>Owner</th>
+            <th>Assignee</th>
+            <th>Creator</th>
             <th style={{ width: 40 }}></th>
           </tr>
         </thead>
@@ -174,6 +175,9 @@ export default function TaskBoard({ tasks = [], projectId }) {
                   type="date"
                   className={styles.dateInput}
                   defaultValue={task.due_date ? task.due_date.split('T')[0] : ''}
+                  onClick={(e) => {
+                    try { e.target.showPicker() } catch (err) {}
+                  }}
                   onChange={(e) => updateTask.mutate({ id: task.id, due_date: e.target.value })}
                 />
               </td>
@@ -226,6 +230,24 @@ export default function TaskBoard({ tasks = [], projectId }) {
                   {task.is_working ? <Square size={14} fill="currentColor" /> : <Play size={14} fill="currentColor" />}
                 </button>
               </td>
+              <td className={styles.assigneeCell}>
+                <select
+                  className={styles.assigneeSelect}
+                  value={task.assignees?.[0]?.id || ''}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    updateTask.mutate({ id: task.id, assignee_ids: val ? [val] : [] })
+                  }}
+                  style={{ maxWidth: '120px' }}
+                >
+                  <option value="">Unassigned</option>
+                  {members.map(m => (
+                    <option key={m.user.id} value={m.user.id}>
+                      {m.user.full_name || m.user.email}
+                    </option>
+                  ))}
+                </select>
+              </td>
               <td className={styles.creatorCell}>
                 {task.creator?.avatar ? (
                   <img src={task.creator.avatar} className={styles.avatar} alt="" />
@@ -246,7 +268,7 @@ export default function TaskBoard({ tasks = [], projectId }) {
             </tr>
           ))}
           <tr className={styles.inlineCreator}>
-            <td colSpan={9}>
+            <td colSpan={10}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0 1rem' }}>
                 <Plus size={14} className={styles.meta} />
                 <input

@@ -62,8 +62,7 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only_fields = ["id", "author", "is_edited", "created_at", "updated_at"]
 
     def get_replies(self, obj):
-        if obj.parent is not None:
-            return []
+
         children = obj.replies.select_related("author").all()
         return CommentSerializer(children, many=True, context=self.context).data
 
@@ -90,6 +89,8 @@ class TaskListSerializer(serializers.ModelSerializer):
         ]
 
     def get_project(self, obj):
+        if not obj.project:
+            return None
         from apps.projects.serializers import ProjectMinimalSerializer
         return ProjectMinimalSerializer(obj.project).data
 

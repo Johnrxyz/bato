@@ -12,7 +12,7 @@ const PAGE_TITLES = {
   '/kanban': 'Board',
   '/tasks': 'My Tasks',
   '/time': 'Time Tracking',
-  '/reports': 'Reports',
+
   '/settings': 'Settings',
 }
 

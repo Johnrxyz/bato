@@ -137,6 +137,28 @@
   color: var(--color-danger);
 }
 
+.assigneeCell {
+  width: 130px;
+}
+
+.assigneeSelect {
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  padding: 4px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  transition: all var(--transition-fast);
+}
+
+.assigneeSelect:hover, .assigneeSelect:focus {
+  border-color: var(--color-accent);
+}
+
 .creatorCell {
   display: flex;
   align-items: center;

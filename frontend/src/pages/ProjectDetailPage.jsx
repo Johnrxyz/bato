@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { projectsApi } from '@/api/projects'
 import { StatusBadge } from '@/components/ui/Badge'
-import { Kanban } from 'lucide-react'
+import { Kanban, ChevronRight } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import TaskBoard from '@/components/project/TaskBoard'
 import TaskPanel from '@/components/project/TaskPanel'
@@ -22,6 +22,11 @@ export default function ProjectDetailPage() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
+        <div className={styles.breadcrumb}>
+          <Link to="/projects" className={styles.breadcrumbLink}>Projects</Link>
+          <ChevronRight size={14} className={styles.breadcrumbSeparator} />
+          <span className={styles.breadcrumbCurrent}>{project.title}</span>
+        </div>
         <div className={styles.meta}>
           <span className={styles.identifier}>{project.identifier}</span>
           <StatusBadge status={project.status} />
@@ -43,7 +48,7 @@ export default function ProjectDetailPage() {
         </div>
       </div>
 
-      <TaskBoard tasks={project.tasks} projectId={projectId} />
+      <TaskBoard tasks={project.tasks} projectId={projectId} members={project.members} />
 
       <section className={styles.stats} style={{ marginTop: '2rem' }}>
         <div className={styles.stat}>

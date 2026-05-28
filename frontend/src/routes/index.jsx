@@ -16,7 +16,7 @@ import ProjectDetailPage from '@/pages/ProjectDetailPage'
 import TasksPage from '@/pages/TasksPage'
 import KanbanPage from '@/pages/KanbanPage'
 import TimeTrackingPage from '@/pages/TimeTrackingPage'
-import ReportsPage from '@/pages/ReportsPage'
+
 import SettingsPage from '@/pages/SettingsPage'
 
 function ProtectedRoute({ children }) {
@@ -59,7 +59,7 @@ export default function AppRouter() {
         <Route path="/kanban" element={<KanbanPage />} />
         <Route path="/tasks" element={<TasksPage />} />
         <Route path="/time" element={<TimeTrackingPage />} />
-        <Route path="/reports" element={<ReportsPage />} />
+
         <Route path="/settings" element={<SettingsPage />} />
       </Route>
 
