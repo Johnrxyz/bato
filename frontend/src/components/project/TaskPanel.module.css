@@ -333,3 +333,26 @@
   text-align: center;
   padding: var(--space-4);
 }
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .panel {
+    max-width: 100vw;
+    width: 100vw;
+  }
+
+  .header {
+    padding: var(--space-4);
+    padding-top: calc(var(--space-4) + env(safe-area-inset-top, 0px));
+  }
+
+  .content {
+    padding: var(--space-4);
+    gap: var(--space-6);
+  }
+
+  .footer {
+    padding: var(--space-4);
+    padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px));
+  }
+}

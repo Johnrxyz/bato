@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { Bell } from 'lucide-react'
+import { Bell, Menu } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
+import { useUIStore } from '@/store/uiStore'
 import { notificationsApi } from '@/api/reports'
 import NotificationDropdown from './NotificationDropdown'
 import styles from './Topbar.module.css'
@@ -19,6 +20,7 @@ const PAGE_TITLES = {
 export default function Topbar() {
   const { pathname } = useLocation()
   const [showNotifications, setShowNotifications] = useState(false)
+  const toggleMobileSidebar = useUIStore((s) => s.toggleMobileSidebar)
 
   const title = Object.entries(PAGE_TITLES).find(([path]) =>
     pathname === path || pathname.startsWith(path + '/')
@@ -34,7 +36,12 @@ export default function Topbar() {
 
   return (
     <header className={styles.topbar} role="banner">
-      <h1 className={styles.pageTitle}>{title}</h1>
+      <div className={styles.left}>
+        <button className={styles.menuBtn} onClick={toggleMobileSidebar} aria-label="Toggle menu">
+          <Menu size={18} strokeWidth={1.75} />
+        </button>
+        <h1 className={styles.pageTitle}>{title}</h1>
+      </div>
       <div className={styles.actions}>
         <button
           className={`${styles.notifBtn} ${showNotifications ? styles.notifBtnActive : ''}`}

@@ -12,6 +12,7 @@ export const useUIStore = create(
   persist(
     (set, get) => ({
       sidebarCollapsed: false,
+      mobileSidebarOpen: false,
       activePanelTaskId: null,
       projectModalOpen: false,
       theme: 'light',
@@ -30,6 +31,9 @@ export const useUIStore = create(
 
       toggleSidebar: () =>
         set((s) => ({ sidebarCollapsed: !s.sidebarCollapsed })),
+        
+      setMobileSidebarOpen: (open) => set({ mobileSidebarOpen: open }),
+      toggleMobileSidebar: () => set((s) => ({ mobileSidebarOpen: !s.mobileSidebarOpen })),
 
       openTaskPanel: (taskId) => set({ activePanelTaskId: taskId }),
       closeTaskPanel: () => set({ activePanelTaskId: null }),

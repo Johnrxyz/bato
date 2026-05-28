@@ -31,7 +31,7 @@ export default function ProjectDetailPage() {
           <span className={styles.identifier}>{project.identifier}</span>
           <StatusBadge status={project.status} />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+        <div className={styles.headerContent}>
           <div>
             <h2 className={styles.title}>{project.title}</h2>
             {project.description && (

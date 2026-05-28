@@ -151,6 +151,7 @@ export default function TasksPage() {
         </div>
       </div>
 
+      <div className={styles.tableWrap}>
       <table className={styles.table}>
         <thead>
           <tr>
@@ -242,6 +243,7 @@ export default function TasksPage() {
           )}
         </tbody>
       </table>
+      </div>
     </div>
   )
 }

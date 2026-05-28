@@ -324,6 +324,7 @@
 /* Workload table additions */
 .tableWrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .memberName {
   font-weight: var(--font-medium);

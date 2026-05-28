@@ -20,6 +20,8 @@ const NAV_ITEMS = [
 export default function Sidebar() {
   const collapsed = useUIStore((s) => s.sidebarCollapsed)
   const toggleSidebar = useUIStore((s) => s.toggleSidebar)
+  const mobileOpen = useUIStore((s) => s.mobileSidebarOpen)
+  const setMobileOpen = useUIStore((s) => s.setMobileSidebarOpen)
   const setProjectModalOpen = useUIStore((s) => s.setProjectModalOpen)
   const user = useAuthStore((s) => s.user)
   const logout = useAuthStore((s) => s.logout)
@@ -31,7 +33,11 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`} aria-label="Main navigation">
+    <>
+      {mobileOpen && (
+        <div className={styles.backdrop} onClick={() => setMobileOpen(false)} aria-hidden="true" />
+      )}
+      <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''} ${mobileOpen ? styles.mobileOpen : ''}`} aria-label="Main navigation">
       {/* Brand */}
       <div className={styles.brand}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" className={styles.logo}>
@@ -66,6 +72,7 @@ export default function Sidebar() {
               `${styles.navItem} ${isActive ? styles.active : ''}`
             }
             title={collapsed ? label : undefined}
+            onClick={() => setMobileOpen(false)}
           >
             <Icon size={16} strokeWidth={1.75} aria-hidden="true" />
             {!collapsed && <span className={styles.navLabel}>{label}</span>}
@@ -81,6 +88,7 @@ export default function Sidebar() {
             `${styles.navItem} ${isActive ? styles.active : ''}`
           }
           title={collapsed ? 'Settings' : undefined}
+          onClick={() => setMobileOpen(false)}
         >
           <Settings size={16} strokeWidth={1.75} aria-hidden="true" />
           {!collapsed && <span className={styles.navLabel}>Settings</span>}
@@ -120,5 +128,6 @@ export default function Sidebar() {
         </button>
       </div>
     </aside>
+    </>
   )
 }
