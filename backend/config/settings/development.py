@@ -6,6 +6,13 @@ DEBUG = True
 # Allow all hosts locally
 ALLOWED_HOSTS = ["*"]
 
+# Required for Django 4.0+ when accessed over HTTPS (e.g. PythonAnywhere)
+CSRF_TRUSTED_ORIGINS = [
+    "https://ryee.pythonanywhere.com",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
 # Django Debug Toolbar (optional, install separately)
 INTERNAL_IPS = ["127.0.0.1"]
 
