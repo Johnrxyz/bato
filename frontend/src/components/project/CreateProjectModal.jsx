@@ -23,7 +23,12 @@ export default function CreateProjectModal({ isOpen, onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    createProject.mutate(formData)
+    const payload = {
+      title: formData.title,
+      description: formData.description,
+      due_date: formData.due_date || null,
+    }
+    createProject.mutate(payload)
   }
 
   const generateIdentifier = (title) => {
